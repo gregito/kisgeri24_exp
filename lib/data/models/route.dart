@@ -1,5 +1,5 @@
 import 'package:kisgeri24/data/models/entity.dart';
-import 'package:kisgeri24/data/models/init_values.dart';
+import 'package:kisgeri24/misc/init_values.dart';
 
 class Route extends Entity {
   String name;
@@ -8,6 +8,7 @@ class Route extends Entity {
   int length;
   int key;
   int difficulty;
+  int ordinal;
   String diffchanger;
 
   Route({
@@ -17,6 +18,7 @@ class Route extends Entity {
     int? length,
     int? key,
     int? difficulty,
+    int? ordinal,
     String? diffchanger,
   })  : name = name ?? unsetString,
         id = id ?? unsetString,
@@ -24,6 +26,7 @@ class Route extends Entity {
         length = length ?? 0,
         key = key ?? 0,
         difficulty = difficulty ?? 0,
+        ordinal = ordinal ?? unsetInt,
         diffchanger = diffchanger ?? unsetString;
 
   static Route fromSnapshot(value) {
@@ -34,6 +37,7 @@ class Route extends Entity {
     int length = 0;
     int keyHere = 0;
     int difficulty = 0;
+    int ordinal = unsetInt;
     String diffchanger = unsetString;
 
     routeMap.forEach((key, value) {
@@ -47,6 +51,8 @@ class Route extends Entity {
         length = value;
       } else if (key == 'key') {
         keyHere = value;
+      } else if (key == 'ordinal') {
+        ordinal = value;
       } else if (key == 'difficulty') {
         difficulty = value;
       } else if (key == 'diffchanger') {
@@ -61,6 +67,7 @@ class Route extends Entity {
         length: length,
         key: keyHere,
         difficulty: difficulty,
+        ordinal: ordinal,
         diffchanger: diffchanger);
     return route;
   }
