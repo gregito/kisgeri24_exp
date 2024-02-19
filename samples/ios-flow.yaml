@@ -1,0 +1,4 @@
+appId: org.wikimedia.wikipedia
+---
+- launchApp
+- tapOn: "Log In"
